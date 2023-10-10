@@ -8,22 +8,22 @@ module.exports = {
 
 async function index(req, res) {
     const flights = await Flight.find({});
-    res.render('flights/index', {flights });
+    res.render('flights/index', { flights });
 };
 
 function newFlight(req, res) {
-    //
-    //
-    res.render('flights/new', {errorMsg: '' });
+    res.render('flights/new', { errorMsg: '' });
 };
 
 async function create(req, res) {
-    console.log(req.body);
-    //
-    // req.body.airline = 
-    // //
-    // req.body.airport = 
-    // req.body.flightNo = 
-    // req.body.departs = 
-}
+    req.body.flightNo = parseInt(req.body.flightNo);
+    req.body.departs = new Date(req.body.departs);
 
+    try {
+        await Flight.create(req.body);
+        res.redirect('/flights');
+    } catch (err) {
+        console.log(err);
+        res.render('flights/new', { errorMsg: err.message });
+    }
+}
