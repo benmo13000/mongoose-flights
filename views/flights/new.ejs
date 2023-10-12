@@ -1,21 +1,40 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="css/styles.css" type="text/css">
 
 <h2>Enter a New Flight</h2>
 <form action="/flights" method="POST">
-  <label>Airline:
-    <input type="text" name="airline">
-  </label><br>
-  <label>Airport:
-    <input type="text" name="airport">
-  </label><br>
-  <label>Flight Number:
-    <input type="number" name="flightNo">
-  </label><br>
-  <label>Departure:
-    <input type="date" name="departs">
-  </label><br>
+  <label>Airline:</label>
+ <select name="airline">
+  <option value="American">American</option>
+  <option value="Spirit">Spirit</option>
+  <option value="United">United</option>
+ </select><br>
+  <label>Coming From:</label>
+  <select name="airport">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="PDX">PDX</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+    <option value="GAY">GAY</option>
+  </select>
+   <!-- <select name="airportArrival">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="PDX">PDX</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+    <option value="GAY">GAY</option>
+  </select><br> -->
+  <label id="flightNumber">Flight Number:</label>
+  <input type="number" name="flightNo"><br>
+  <label>Departure:</label>
+  <input type="date" name="departs"><br>
   <button type="submit">Add Flight</button>
 </form>
+
 <p><%= errorMsg %></p>
 
 <%- include('../partials/footer') %>
