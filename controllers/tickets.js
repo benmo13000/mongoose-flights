@@ -4,7 +4,7 @@ const Flight= require('../models/flight');
 
 async function newTicket(req, res) {
     try {
-        const flight = await Flight.findById(req,params.id);
+        const flight = await Flight.findById(req.params.id);
         res.render('tickets/new', { flight });
     }catch (err) {
         console.log(err);
@@ -19,6 +19,7 @@ async function newTicket(req, res) {
         console.log("after", ticketInfo)
         try{
             const ticket = await Ticket.create(ticketInfo)
+            console.log(ticket)
             res.redirect(`/flights/${flightId}`);
         } catch(err) {
             console.log(err)

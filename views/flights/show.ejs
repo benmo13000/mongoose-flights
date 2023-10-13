@@ -1,8 +1,8 @@
 <%- include('../partials/header') %>
-<%= flight.airline %>
-<%= flight.airport %>
-<%= flight.flightNo %>
-<%= flight.departs %>
+<%= flight.airline %> <br>
+<%= flight.airport %> 
+<%= flight.flightNo %> <br>
+<%= flight.departs %> <br>
 <% flight.destinations.forEach(function(f) { %>
   <tr>
     <td><%= f.airportArrival %></td>
@@ -25,5 +25,13 @@
     <input type="date" name="arrival"><br>
   <button type="submit">Add Destination</button>
 </form>
-
+<br>
+<a href="/flights/<%= flight._id%>/tickets/new">New Ticket</a> <br>
+<% tickets.forEach(function(t) { %>
+<tr>
+  <td>Seat: <%= t.seat %>, <br> </td>
+  <td>Price: $<%= t.price %> <br>
+  <br> </td>
+</tr>
+<% }); %>
 <%- include('../partials/footer') %>
